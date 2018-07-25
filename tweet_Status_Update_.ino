@@ -14,7 +14,7 @@ int minCalls = 2;   // Minimum number of times the Choreo be executed before con
 
 void setup() {
   Serial.begin(9600);
-  srand (time (0));
+  srand(analogRead(A1)*analogRead(A0)*analogRead(A4));    //A0,A1,A4 are empty pins as seeds for rand()
   // For debugging, wait until the serial console is connected
   delay(4000);
   
@@ -23,7 +23,7 @@ void setup() {
   pinMode(A4,OUTPUT);
   digitalWrite(A4,HIGH);
   
-  while(!Serial);
+  //while(!Serial);
 }
 
 void loop() {
@@ -94,7 +94,7 @@ void loop() {
         StatusesUpdateChoreo.setDeviceType(TEMBOO_DEVICE_TYPE);
     
         // Set Choreo inputs
-        String StatusUpdateValue = "NORMAL:4: "+String(rand());
+        String StatusUpdateValue = "NORMAL: "+String(rand());
         StatusesUpdateChoreo.addInput("StatusUpdate", StatusUpdateValue);
         String AccessTokenValue = "1021408926514937856-M4SRadfHn91uiUiK25ASZNIAdW7czZ";
         StatusesUpdateChoreo.addInput("AccessToken", AccessTokenValue);
@@ -148,7 +148,7 @@ void loop() {
         StatusesUpdateChoreo.setDeviceType(TEMBOO_DEVICE_TYPE);
     
         // Set Choreo inputs
-        String StatusUpdateValue = "LOW:4: "+String(rand());
+        String StatusUpdateValue = "LOW: "+String(rand());
         StatusesUpdateChoreo.addInput("StatusUpdate", StatusUpdateValue);
         String AccessTokenValue = "1021408926514937856-M4SRadfHn91uiUiK25ASZNIAdW7czZ";
         StatusesUpdateChoreo.addInput("AccessToken", AccessTokenValue);
